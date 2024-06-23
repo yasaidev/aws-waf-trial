@@ -1,6 +1,6 @@
 #!/usr/bin/env node
-import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
+import 'source-map-support/register';
 import { AwsWafTrialStack } from '../lib/aws-waf-trial-stack';
 
 const app = new cdk.App();
@@ -18,4 +18,6 @@ new AwsWafTrialStack(app, 'AwsWafTrialStack', {
   // env: { account: '123456789012', region: 'us-east-1' },
 
   /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
+    allowedIP: app.node.tryGetContext('allowedip'),
+    allowedPrefixID:app.node.tryGetContext('allowedPrefixID')
 });
